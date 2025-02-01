@@ -1,0 +1,67 @@
+
+(base) C:\Users\mayra>conda activate geo_env
+
+(geo_env) C:\Users\mayra>cd C:\Users\mayra\geo_env
+
+(geo_env) C:\Users\mayra\geo_env>python assignment_1.py
+> c:\users\mayra\geo_env\assignment_1.py(8)<module>()
+-> dset
+(Pdb) dset
+<xarray.Dataset> Size: 52MB
+Dimensions:      (lat: 3601, lon: 3601)
+Coordinates:
+  * lat          (lat) float64 29kB 22.0 22.0 22.0 22.0 ... 21.0 21.0 21.0 21.0
+  * lon          (lon) float64 29kB 39.0 39.0 39.0 39.0 ... 40.0 40.0 40.0 40.0
+Data variables:
+    SRTMGL1_DEM  (lat, lon) float32 52MB ...
+    crs          |S1 1B ...
+Attributes:
+    GDAL_AREA_OR_POINT:  Point
+    Conventions:         CF-1.5
+    GDAL:                GDAL 2.2.0dev, released 2016/99/99
+    history:             Fri Apr 12 12:38:54 2019: /usr/bin/ncks -O --netcdf4...
+    NCO:                 4.3.7
+(Pdb) dest.variables
+*** NameError: name 'dest' is not defined
+(Pdb) dset.variables
+Frozen({'SRTMGL1_DEM': <xarray.Variable (lat: 3601, lon: 3601)> Size: 52MB
+[12967201 values with dtype=float32]
+Attributes:
+    long_name:      Shuttle Radar Topography Mission (SRTM) Global 1 arc-seco...
+    grid_mapping:   crs
+    valid_range:    [-32767  32767]
+    standard_name:  height
+    units:          meters, 'crs': <xarray.Variable ()> Size: 1B
+[1 values with dtype=|S1]
+Attributes:
+    grid_mapping_name:            latitude_longitude
+    long_name:                    CRS definition
+    longitude_of_prime_meridian:  0.0
+    semi_major_axis:              6378137.0
+    inverse_flattening:           298.257223563
+    spatial_ref:                  GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["...
+    GeoTransform:                 38.99986111111111 0.0002777777777777778 0 2..., 'lat': <xarray.IndexVariable 'lat' (lat: 3601)> Size: 29kB
+array([22.      , 21.999722, 21.999444, ..., 21.000556, 21.000278, 21.      ],
+      shape=(3601,))
+Attributes:
+    standard_name:  latitude
+    long_name:      latitude
+    units:          degrees_north, 'lon': <xarray.IndexVariable 'lon' (lon: 3601)> Size: 29kB
+array([39.      , 39.000278, 39.000556, ..., 39.999444, 39.999722, 40.      ],
+      shape=(3601,))
+Attributes:
+    standard_name:  longitude
+    long_name:      longitude
+    units:          degrees_east})
+(Pdb) DEM = np.array(dset.variables['SRTMGL1_DEM'])
+(Pdb) dset.close()
+(Pdb) print(DEM.shape)
+(3601, 3601)
+(Pdb) plt.imshow(DEM)
+<matplotlib.image.AxesImage object at 0x00000150EFDE4F80>
+(Pdb) cbar = plt.colorbar()
+(Pdb) cbar.set_label('Elevation (m asl)')
+(Pdb)
+(Pdb) plt.savefig('assignment_1.png', dpi=300)
+(Pdb)
+(Pdb)
