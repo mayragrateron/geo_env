@@ -1,0 +1,20 @@
+conda activate geo_env
+
+cd C:\Users\mayra\geo_env
+
+python assignment_1.py
+
+dset
+dset.variables
+
+DEM = np.array(dset.variables['SRTMGL1_DEM'])
+
+dset.close()
+
+print(DEM.shape)
+plt.imshow(DEM)
+cbar = plt.colorbar()
+cbar.set_label('Elevation (m asl)')
+
+plt.savefig('assignment_1.png', dpi=300)
+
