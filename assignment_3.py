@@ -33,20 +33,11 @@ df_daily['HI'] = tools.gen_heat_index(df_daily['TMP'].values, df_daily['RH'].val
 df_isd['HI'].plot(title="Heat index in Jeddah (2024)")
 plt.xlabel("Date")
 plt.ylabel("HI (°C)")
-#plt.savefig("HI_timeseries.png")
-#plt.show()
+plt.savefig("HI_timeseries.png")
+plt.show()
 
 # Part 3: Potential Impact of Climate Change
 # What is the projected increase in air temperature for Jeddah
-#warming_offset = 2.7 
-#df_isd = tools.read_isd_csv(csv_path)
-#df_isd['TMP_future'] = df_isd['TMP'] + warming_offset
-#df_isd['HI_future'] = tools.gen_heat_index(df_isd['TMP_future'].values, df_isd['RH'].values)
-
-#max_hi_future = df_isd['HI_future'].max()
-#print("Highest projected HI:", max_hi_future)
-#hi_increase = max_hi_future - df_isd['HI'].max()
-#print("Increase in HI due to climate change:", hi_increase)
 
 warming_offset = 2.7
 df_isd['TMP_future'] = df_isd['TMP'] + warming_offset
